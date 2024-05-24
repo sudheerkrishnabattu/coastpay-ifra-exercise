@@ -23,23 +23,23 @@ module "ecr_disabled" {
 }
 
 module "ecr" {
-	source  = "../../aws-ecr"
-	
+  source = "../../aws-ecr"
 
-	repository_force_delete = true
-	repository_name = local.name
-        create_lifecycle_policy           = true
-	repository_lifecycle_policy = jsonencode({
-		rules = [{
-			action = { type = "expire" }
-			description = "keep last 3 images"
-			rulePriority = 1
-			selection = {
-				countNumber = 3
-				countType = "imageCountMoreThan"
-				tagStatus = "any"
-			}
-		}]
-	})
-        tags = local.tags
+
+  repository_force_delete = true
+  repository_name         = local.name
+  create_lifecycle_policy = true
+  repository_lifecycle_policy = jsonencode({
+    rules = [{
+      action       = { type = "expire" }
+      description  = "keep last 3 images"
+      rulePriority = 1
+      selection = {
+        countNumber = 3
+        countType   = "imageCountMoreThan"
+        tagStatus   = "any"
+      }
+    }]
+  })
+  tags = local.tags
 }
