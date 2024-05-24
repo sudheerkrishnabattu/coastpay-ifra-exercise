@@ -17,13 +17,13 @@ locals {
 data "aws_caller_identity" "current" {}
 
 module "ecr_disabled" {
-  source = "../.."
+  source = "../modules/aws-ecr"
 
   create = false
 }
 
 module "ecr" {
-  source = "../../aws-ecr"
+  source = "../modules/aws-ecr"
 
 
   repository_force_delete = true
