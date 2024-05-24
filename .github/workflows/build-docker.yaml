@@ -3,7 +3,7 @@ name: build-docker
 on:
   push:
     branches:
-      - maini
+      - main
     paths:
       - echo-api/**
 
