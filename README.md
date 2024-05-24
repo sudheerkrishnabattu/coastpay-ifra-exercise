@@ -1,1 +1,1 @@
-# coastpay-ifra-exercise
+# coastpay-infra-exercise
