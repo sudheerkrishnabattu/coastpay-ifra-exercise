@@ -44,13 +44,6 @@ resource "aws_ecs_task_definition" "task_definition" {
             "hostPort" : var.container_port,
           }
         ]
-        "healthCheck" : {
-          "command" : ["CMD-SHELL", "curl -f http://localhost:3246/ || exit 1"],
-          "interval" : 30,
-          "timeout" : 5,
-          "startPeriod" : 10,
-          "retries" : 3
-        }
       }
     ]
   )

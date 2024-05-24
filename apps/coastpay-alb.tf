@@ -16,7 +16,7 @@ resource "aws_lb" "this" {
 }
 
 resource "aws_lb_target_group" "target_group" {
-  name        = "test-tg"
+  name        = "coastpay-tg"
   port        = var.container_port
   protocol    = "HTTP"
   target_type = "ip"
