@@ -28,6 +28,12 @@ variable "public_subnets" {
   description = "Declare public subnets"
 }
 
+variable "private_subnets" {
+  type        = list(string)
+  description = "Declare private subnets"
+}
+
+
 variable "logs_s3_name" {
   type        = string
   description = "S3 bucket used for logs"
