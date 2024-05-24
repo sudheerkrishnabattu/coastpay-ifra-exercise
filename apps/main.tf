@@ -2,7 +2,7 @@
 
 locals {
   region = "us-east-1"
-  name   = "ecr-ex-${replace(basename(path.cwd), "_", "-")}"
+  name   = "ecr-coastpay-${replace(basename(path.cwd), "_", "-")}"
 
   account_id = data.aws_caller_identity.current.account_id
 
@@ -18,14 +18,11 @@ data "aws_caller_identity" "current" {}
 
 module "ecr_disabled" {
   source = "../modules/aws-ecr"
-
   create = false
 }
 
 module "ecr" {
-  source = "../modules/aws-ecr"
-
-
+  source                  = "../modules/aws-ecr"
   repository_force_delete = true
   repository_name         = local.name
   create_lifecycle_policy = true

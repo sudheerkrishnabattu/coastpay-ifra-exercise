@@ -1,6 +1,6 @@
 terraform {
   backend "remote" {
-    organization = "flux-node"
+    organization = "fluxnode"
 
     workspaces {
       name = "coastpay-ifra-exercise"
@@ -13,5 +13,9 @@ terraform {
       version = ">= 5.37"
     }
   }
+}
+
+provider "aws" {
+  region = "us-east-1"
 }
 
