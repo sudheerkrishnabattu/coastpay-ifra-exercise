@@ -13,7 +13,6 @@ jobs:
   deploy:
     name: Deploy
     runs-on: fluxnode
-    environment: dev
 
     steps:
       - name: Checkout
