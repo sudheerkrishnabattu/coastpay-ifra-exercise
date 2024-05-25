@@ -1,9 +1,9 @@
 #Create ECS cluster with Fargate
 
-#data "aws_ecr_image" "api_image" {
-#  repository_name = "ecr-coastpay-${replace(basename(path.cwd), "_", "-")}"
-#  most_recent     = true
-#}
+data "aws_ecr_image" "api_image" {
+  repository_name = "ecr-coastpay-${replace(basename(path.cwd), "_", "-")}"
+  most_recent     = true
+}
 
 locals {
   cluster_name = "coastpay-ecs"
@@ -34,8 +34,8 @@ resource "aws_ecs_task_definition" "task_definition" {
     [
       {
         "name" : "coastpay-rest-container",
-        #"image" : join(":", [module.ecr.repository_url, data.aws_ecr_image.api_image.image_tags[0]])
-        "image" : "nginx:latest"
+        "image" : join(":", [module.ecr.repository_url, data.aws_ecr_image.api_image.image_tags[0]])
+        #"image" : "nginx:latest"
         "entryPoint" : []
         "essential" : true,
         "networkMode" : "awsvpc",
