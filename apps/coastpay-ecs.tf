@@ -35,7 +35,7 @@ resource "aws_ecs_task_definition" "task_definition" {
       {
         "name" : "coastpay-rest-container",
         #"image" : join(":", [module.ecr.repository_url, data.aws_ecr_image.api_image.image_tags[0]])
-        "iamge" : "nginx:latest"
+        "image" : "nginx:latest"
         "entryPoint" : []
         "essential" : true,
         "networkMode" : "awsvpc",
