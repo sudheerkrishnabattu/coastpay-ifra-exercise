@@ -7,7 +7,7 @@ import sys
 # Block size is set to 8192 because thats usually the max header size
 BLOCK_SIZE = 8192
 
-def serve(host='0.0.0.0', port=3246, verbosity=1):
+def serve(host='0.0.0.0', port=80, verbosity=1):
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -81,7 +81,7 @@ if __name__ == '__main__':
 
     parser = ArgumentParser(description="Server that returns any http request made to it")
     parser.add_argument('-b', '--bind', default='localhost', help='host to bind to')
-    parser.add_argument('-p', '--port', default=3246, type=int, help='port to listen on')
+    parser.add_argument('-p', '--port', default=80, type=int, help='port to listen on')
     parser.add_argument('-v', '--verbose', action='store_true', help='print all requests to terminal')
     parser.add_argument('-q', '--quiet', action='store_true', help='silence all output (overrides --verbose)')
     args = parser.parse_args()
