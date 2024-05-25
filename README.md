@@ -5,6 +5,7 @@ A rest service is deployed to a container in AWS ECS in private endpoint and exp
 1) Terraform IAC to deploy resources into AWS
 2) AWS as a cloud environmet
 3) Github actions to build docker images on a self hosted runner
+4) Terraform Cloud to host terraform execution
 
 Running a command from Linux terminal will print below Output
 
