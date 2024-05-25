@@ -1,9 +1,9 @@
 #Create ECS cluster with Fargate
 
-data "aws_ecr_image" "api_image" {
-  repository_name = "ecr-coastpay-${replace(basename(path.cwd), "_", "-")}"
-  most_recent     = true
-}
+#data "aws_ecr_image" "api_image" {
+#  repository_name = "ecr-coastpay-${replace(basename(path.cwd), "_", "-")}"
+#  most_recent     = true
+#}
 
 locals {
   cluster_name = "coastpay-ecs"
@@ -34,7 +34,8 @@ resource "aws_ecs_task_definition" "task_definition" {
     [
       {
         "name" : "coastpay-rest-container",
-        "image" : join(":", [module.ecr.repository_url, data.aws_ecr_image.api_image.image_tags[0]])
+        #"image" : join(":", [module.ecr.repository_url, data.aws_ecr_image.api_image.image_tags[0]])
+        "iamge" : "nginx:latest"
         "entryPoint" : []
         "essential" : true,
         "networkMode" : "awsvpc",
@@ -53,6 +54,7 @@ resource "aws_ecs_task_definition" "task_definition" {
   memory                   = "512"
   execution_role_arn       = aws_iam_role.ecsTaskExecutionRole.arn
   task_role_arn            = aws_iam_role.ecsTaskRole.arn
+  depends_on               = [module.ecr]
 }
 
 resource "aws_ecs_service" "ecs_service" {

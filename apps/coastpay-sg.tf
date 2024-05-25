@@ -5,19 +5,19 @@ resource "aws_security_group" "ecs_sg" {
   revoke_rules_on_delete = true
 
   ingress {
-    description              = "Allow inbound traffic from ALB"
-    from_port                = 0
-    to_port                  = 0
-    protocol                 = "-1"
-    security_groups        = ["${aws_security_group.coastpay_sg.id}"]
+    description     = "Allow inbound traffic from ALB"
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
+    security_groups = ["${aws_security_group.coastpay_sg.id}"]
   }
 
   egress {
-    from_port         = 0
-    to_port           = 0
-    protocol          = "-1"
-    cidr_blocks       = ["0.0.0.0/0"]
-    description       = "Allow outbound traffic from ECS"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "Allow outbound traffic from ECS"
   }
 }
 
